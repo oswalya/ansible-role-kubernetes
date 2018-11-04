@@ -17,6 +17,7 @@ variables:
   - '${ANSIBLE_COMMAND} -i ${ANSIBLE_INVENTORY} ${ANSIBLE_OPTIONS} ${ANSIBLE_PLAYBOOK}'
 
 before_script:
+- pip install ansible-lint
 
 allinone:linting:
   extends: .job_template
