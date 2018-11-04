@@ -1,0 +1,27 @@
+---
+stages:
+- allinone
+- master_seperated
+- all_seperated
+variables:
+  ANSIBLE_INVENTORY: tests/allinone/inventory
+  ANSIBLE_COMMAND: ansible-playbook
+  ANSIBLE_PLAYBOOK: tests/site.yml
+  ANSIBLE_OPTIONS: '--diff --check'
+
+
+.job_template:
+  tags:
+  - docker
+  script:
+  - '${ANSIBLE_COMMAND} -i ${ANSIBLE_INVENTORY} ${ANSIBLE_OPTIONS} ${ANSIBLE_PLAYBOOK}'
+
+before_script:
+
+allinone:linting:
+  extends: .job_template
+  stage: allinone
+  variables:
+    ANSIBLE_COMMAND: ansible-lint
+    ANSIBLE_OPTIONS: ''
+    ANSIBLE_INVENTORY: ''

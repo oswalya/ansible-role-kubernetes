@@ -1,0 +1,14 @@
+[kubernetes:children]
+etcd
+k8s_masters
+k8s_nodes
+
+
+[etcd]
+localhost
+
+[k8s_masters]
+localhost
+
+[k8s_nodes]
+localhost
