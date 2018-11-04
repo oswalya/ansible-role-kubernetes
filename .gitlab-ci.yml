@@ -10,7 +10,6 @@ before_script:
 - pip install ansible-lint
 
 allinone:linting:
-  extends: .job_template
   stage: allinone
   script:
   - ansible-lint -v tests/site.yml
